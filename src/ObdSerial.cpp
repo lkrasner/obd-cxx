@@ -99,7 +99,7 @@ std::vector<int> ObdSerial::sendObdCommand(std::string command)
 	r.pop_back(); // delete prompt char (">")
 	r.pop_back();
 	
-	for(int i = 0; i < r.length() - 1; i+=2)
+	for(unsigned int i = 0; i < r.length() - 1; i+=2)
 		res.push_back(stoi(r.substr(i,2), nullptr, 16));
 	return res;
 }
