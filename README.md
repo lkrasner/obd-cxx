@@ -6,9 +6,12 @@ A simple C++ OBD-II library that reads commands from a configuration file.
 Requirements
 ============
 make
+
 gcc
+
 pkg-config
-muparser
+
+:muparser
 
 Installation
 ============
