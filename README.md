@@ -11,7 +11,7 @@ gcc
 
 pkg-config
 
-:muparser
+muparser
 
 Installation
 ============
