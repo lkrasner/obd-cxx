@@ -1,0 +1,33 @@
+#!/bin/bash
+
+function require_ex() {
+	echo -n "Checking ${1}....."
+	which $1
+	if [[ $? != "0" ]]
+	then
+		exit 1
+	fi
+}
+
+function check_ex() {
+	echo -n "Checking ${1}....."
+	which ${1}
+}
+
+function require_lib() {
+	echo -n "Checking ${1}....."
+	pkg-config --cflags $1 &> /dev/null || ls /usr/lib | grep ${1} &> /dev/null
+	if [[ $? == "0" ]]
+	then
+		echo "SUCCESS"
+	else
+		echo "NOT FOUND"
+		exit 1
+	fi
+}
+
+require_ex make
+require_ex gcc
+require_ex pkg-config
+
+require_lib muparser

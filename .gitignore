@@ -1,0 +1,3 @@
+*.conf
+src/*.o
+lib/*
