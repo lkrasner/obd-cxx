@@ -20,6 +20,10 @@
 class ObdSerial
 {
 public:	
+	/*
+	 * @brief Constructs a new ObdSerial using given com port
+	 * @param port name of port to connect to
+	 */
 	ObdSerial(const char *port);
 
 	~ObdSerial();
@@ -31,16 +35,39 @@ public:
 	 */
 	int openPort(const char *port, int baudrate);
 
-	bool setup();
-
+	/*
+	 * @brief sends a raw command and returns a string of the result
+	 * @param command the command to send
+	 * @param addReturn set to false to skip adding a carriage return to
+	 * the end
+	 * @return string of result
+	 */
 	std::string sendGenCommand(std::string command, bool addReturn = true);
 
+	/*
+	 * @brief sends a command and returns a vector of ints representing
+	 * each byte returned. should only be used for OBD commands (not AT
+	 * commands)
+	 * @see sendGenCommand
+	 * @param command command to send
+	 * @return vector of resulting ints
+	 */
 	std::vector<int> sendObdCommand(std::string command);
-	
+
+	/*
+	 * @brief asks the ELM device what OBD-II protocol is being used
+	 * @return the protocol
+	 */
 	std::string getProtocol();
 
 private:
-	int fd;
+	/*
+	 * @brief sends some basic setup commands
+	 * @return true if success, else false
+	 */
+	bool setup();
+
+	int fd; //file descriptor for the serial port
 };
 
 #endif

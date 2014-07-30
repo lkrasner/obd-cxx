@@ -1,8 +1,5 @@
-/*
- * Luke Krasner (luke@lukekrasner.com)
- *
- * A simple communication library for ELM 327 devices under linux.
- */
+// ObdSerial.cpp
+
 #include "ObdSerial.hpp"
 
 using namespace std;
@@ -10,7 +7,7 @@ using namespace std;
 ObdSerial::ObdSerial(const char *port)
 {
 	fd = openPort(port, B38400);
-
+	setup();
 }
 
 ObdSerial::~ObdSerial()

@@ -1,6 +1,4 @@
-/*
- * parses a simple config file of Commands
- */
+// ParseConfig.cpp
 
 #include "ParseConfig.hpp"
 
